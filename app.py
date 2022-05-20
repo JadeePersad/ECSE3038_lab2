@@ -11,7 +11,6 @@ app=Flask(__name__)
 
 load_dotenv()
 
-# app.config["MONGO_URI"] = "mongodb+srv://ECSE3038_Lab3:ENiP6n3GhCogFtm4@cluster0.rnpwr.mongodb.net/lab3?retryWrites=true&w=majority"
 app.config["MONGO_URI"]=os.getenv("MONGO_CONNECTION_STRING")
 mongo = PyMongo(app)
 
@@ -40,9 +39,6 @@ def data():
     except ValidationError as ve:
         return ve.messages, 404
    
-
-
-
 
 @app.route('/data/<ObjectId:id>', methods=['PATCH'])
 def tankr3(id):  
